@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Band Automation Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Salary Band Automation Tool</h1>
+
+        <section class="upload-section">
+            <h2>Upload Salary Data</h2>
+            <div class="upload-controls">
+                <input type="file" id="excelFile" accept=".xlsx">
+                <button id="uploadBtn">Upload .xlsx</button>
+            </div>
+            <p id="fileInfo" class="hidden">File: <span id="fileName"></span> (<span id="rowCount"></span> rows)</p>
+            <p id="uploadStatus"></p>
+        </section>
+
+        <section class="lookup-section">
+            <h2>Salary Lookup</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="roleInput">Role</label>
+                    <input type="text" id="roleInput" list="roleOptions" placeholder="e.g. Software Engineer">
+                    <datalist id="roleOptions"></datalist>
+                </div>
+                <div class="form-group">
+                    <label for="locationInput">Location</label>
+                    <input type="text" id="locationInput" list="locationOptions" placeholder="e.g. London">
+                    <datalist id="locationOptions"></datalist>
+                </div>
+                <div class="form-group">
+                    <label for="levelInput">Experience Level</label>
+                    <select id="levelInput">
+                        <option value="">Select Level</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Mid">Mid</option>
+                        <option value="Senior">Senior</option>
+                        <option value="Lead">Lead</option>
+                        <option value="Principal">Principal</option>
+                    </select>
+                </div>
+            </div>
+            <button id="lookupBtn">Get Salary Band</button>
+        </section>
+
+        <section id="resultSection" class="result-section hidden">
+            <h2>Results</h2>
+            <div id="matchBadge" class="badge"></div>
+
+            <div class="salary-details">
+                <div class="salary-box">
+                    <span class="label">Min</span>
+                    <span id="minSalary" class="value"></span>
+                </div>
+                <div class="salary-box highlight">
+                    <span class="label">Mid</span>
+                    <span id="midSalary" class="value"></span>
+                </div>
+                <div class="salary-box">
+                    <span class="label">Max</span>
+                    <span id="maxSalary" class="value"></span>
+                </div>
+                <div class="currency-label" id="currencyLabel"></div>
+            </div>
+
+            <div class="range-bar-container">
+                <div class="range-labels">
+                    <span id="barMin"></span>
+                    <span id="barMid"></span>
+                    <span id="barMax"></span>
+                </div>
+                <div class="range-bar">
+                    <div class="range-fill"></div>
+                    <div class="range-point min"></div>
+                    <div class="range-point mid"></div>
+                    <div class="range-point max"></div>
+                </div>
+            </div>
+
+            <div class="source-details">
+                <h3>Matched Details</h3>
+                <p><strong>Role:</strong> <span id="matchedRole"></span></p>
+                <p><strong>Location:</strong> <span id="matchedLocation"></span></p>
+                <p><strong>Level:</strong> <span id="matchedLevel"></span></p>
+            </div>
+        </section>
+
+        <p id="lookupError" class="error-message hidden"></p>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
